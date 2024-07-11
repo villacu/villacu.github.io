@@ -1,105 +1,225 @@
-<!DOCTYPE HTML>
-<!--
-	Astral by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-	<head>
-		<title>Emilio Villa Cueva</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-	</head>
-	<body class="is-preload">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emilio Villa-Cueva personal website</title>
+    <style>
+        :root {
+            --primary-color: #222831;
+            --secondary-color: #393E46;
+            --accent-color: #00ADB5;
+            --background-color: #EEEEEE;
+            --text-color: #393E46;
+        }
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+            border-radius: 0 0 30px 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .headshot {
+            width: 180px;
+            height: 180px;
+            border-radius: 20%;
+            margin-right: 4%;
+            border: 0px solid white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        .header-text {
+            text-align: center;
+        }
+        h1 {
+            margin: 0;
+            font-size: 2.0em;
+        }
+        nav {
+            background-color: white;
+            padding: 15px 0;
+            border-radius: 20px;
+            margin: 20px auto;
+            max-width: 500px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+        }
+        nav ul li {
+            display: inline;
+            margin: 0 20px;
+        }
+        nav ul li a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease, transform 0.3s ease;
+            display: inline-block;
+            cursor: pointer;
+        }
+        nav ul li a:hover, nav ul li a.active {
+            color: var(--accent-color);
+            transform: scale(1.2);
+        }
+        section {
+            background-color: white;
+            margin: 10px 0;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            display: none;
+        }
+        section.active {
+            display: block;
+        }
+        h2 {
+            color: var(--secondary-color);
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 10px;
+        }
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 10px;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .btn:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .btn::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 5px;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.5);
+            opacity: 0;
+            border-radius: 100%;
+            transform: scale(1, 1) translate(-50%);
+            transform-origin: 50% 50%;
+        }
+        .btn:hover::after {
+            animation: ripple 1s ease-out;
+        }
+        @keyframes ripple {
+            0% {
+                transform: scale(0, 0);
+                opacity: 0.5;
+            }
+            100% {
+                transform: scale(20, 20);
+                opacity: 0;
+            }
+        }
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 30px 30px 0 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <img src="images/me.png" alt="Emilio Villa-Cueva" class="headshot">
+            <div class="header-text">
+                <h1>Emilio Villa-Cueva</h1>
+                <h3>MS student at CIMAT</h3>
+                <!-- <h3>PhD student at MBZUAI</h3> -->
+            </div>
+        </div>
+    </header>
+    <nav>
+        <ul>
+            <li><a onclick="showSection('about')" class="nav-link active">About</a></li>
+            <li><a onclick="showSection('research')" class="nav-link">Research</a></li>
+            <!-- <li><a onclick="showSection('publications')" class="nav-link">Publications</a></li> -->
+            <li><a onclick="showSection('contact')" class="nav-link">Contact</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <section id="about" class="active">
+            <h2>About Me</h2>
+            <p>I'm Emilio, a MS student in the Mathematics Research Center (CIMAT)</p>
+            <!-- <p>I'm Emilio, a PhD student in NLP at MBZUAI, Abu Dhabi.</p> -->
+            <p style="text-align: center;"> <a href="https://scholar.google.com/citations?user=uYz6zaIAAAAJ" class="btn">Google Scholar</a> </p>
+            <p style="text-align: center;"> <a href="documents/cv.pdf" class="btn">Get CV</a> </p>
 
-		<!-- Wrapper-->
-			<div id="wrapper">
+        </section>
+        <section id="research">
+            <h2>Research Interests</h2>
+            <ul>
+                <li>Visual Langauge Models</li>
+                <li>Adapting LMs to new languages</li>
+                <li>Few-shot learning</li>
+                <li>Multilinguality</li>
+                <li>Domain Adaptation.</li>
+            </ul>
+        </section>
+        <!-- <section id="publications">
+            <h2>Recent Publications</h2>
+            <p>[todo :p]</p>
+        </section> -->
+        <section id="contact">
+            <h2>Contact & socials</h2>
+            <p>email: evillacueva [at] gmail [dot] com</p>
+            <p>X: @evllcv</p>
+            <!-- <p>gram: @villaemilio</p> -->
+        </section>
+    </div>
+    <footer>
+        <p>last updated on july '24</p>
+    </footer>
 
-				<!-- Nav -->
-					<nav id="nav">
-						<a href="#" class="icon solid fa-home"><span>Home</span></a>
-						<a href="#aboutme" class="icon solid fa-rocket"><span>About Me</span></a>
-						<a href="#cv" class="icon solid fa-clipboard-list"><span>CV/Resume</span></a>
-						<!-- <a href="mailto:evillacueva@gmail.com" class="icon solid fa-envelope"><span>email me!</span></a> -->
-					</nav>
-
-				<!-- Main -->
-					<div id="main">
-
-						<!-- Me -->
-							<article id="home" class="panel intro">
-								<header>
-									<h1>Emilio Villa-Cueva</h1>
-									<p>MSc in <strong>Computer Science and Industrial Mathematics</strong>.</p>
-									
-									<p>emilio.villa [at] cimat [dot] mx</p>
-								</header>
-								<a href="#aboutme" class="jumplink pic">
-									<span class="arrow icon solid fa-chevron-right"><span>See my work</span></span>
-									<img src="images/me.png" alt="" />
-								</a>
-							</article>
-
-
-						<!-- more on me -->
-						<article id="aboutme" class="panel">
-							<header>
-								<h2>about me.</h2>
-							</header>
-							<p>i am currently a master's Student at the Mathematics Research Center in mexico. in august i will start my phd at MBZUAI.
-								<br>
-								<a href="https://scholar.google.com/citations?user=uYz6zaIAAAAJ">[google scholar]</a> 
-							</p>
-							<h3>research interests.</h3>
-							<ul>								
-								<li>adapting LLMs to new languages</li>
-								<li>application of multilingual models</li>
-								<li>few-shot learning and low resource in NLP</li>
-							  </ul>
-							
-								
-								
-
-						</article>
-
-						<!-- Contact -->
-							<article id="cv" class="panel">
-								<header>
-									<h2>Curriculum Vitae</h2>
-								</header>
-								<iframe src="documents/cv.pdf" width="100%" height="1000px">
-								</iframe>
-								<br>
-								<hr />
-
-								<!-- <h4>Standardized Test Scores</h4>
-								<br>
-								<a href="documents/gre.pdf" target="_blank">GRE</a>
-								<br>
-								<a href="documents/toefl.pdf" target="_blank">TOEFL iBT</a> -->
-								
-	
-							</article>
-							
-					</div>
-
-				<!-- Footer -->
-					<div id="footer">
-						<ul class="copyright">
-							<li> Astral by HTML5 UP </li>
-						</ul>
-					</div>
-
-			</div>
-
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
-
-	</body>
+    <script>
+        function showSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show the selected section
+            document.getElementById(sectionId).classList.add('active');
+            
+            // Update active state in navigation
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
 </html>
