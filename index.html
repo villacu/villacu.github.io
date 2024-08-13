@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Emilio Villa-Cueva's personal website. Learn about his research in NLP, his background in Engineering Physics, and his publications.">
     <title>Emilio Villa-Cueva</title>
     <style>
         :root {
@@ -12,6 +14,11 @@
             --background-color: #EEEEEE;
             --text-color: #393E46;
         }
+
+        html, body {
+            height: 100%;
+        }
+
         body {
             font-family: Arial, Helvetica, sans-serif;
             line-height: 1.6;
@@ -19,59 +26,73 @@
             background-color: var(--background-color);
             margin: 0;
             padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100%;
         }
+
         .container {
             max-width: 800px;
             margin: 0 auto;
             padding: 20px;
+            flex: 1;
         }
+
         header {
             background-color: var(--primary-color);
             color: white;
             text-align: center;
             padding: 15px 0;
             border-radius: 0 0 30px 30px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
+
         .header-content {
             display: flex;
             align-items: center;
             justify-content: center;
             flex-wrap: wrap;
         }
+
         .headshot {
             width: 180px;
             height: 180px;
             border-radius: 20%;
             margin-right: 4%;
             border: 0px solid white;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
+
         .header-text {
             text-align: center;
         }
+
         h1 {
             margin: 0;
             font-size: 2.0em;
         }
+
         nav {
             background-color: white;
             padding: 15px 0;
             border-radius: 20px;
             margin: 20px auto;
             max-width: 500px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
+
         nav ul {
             list-style-type: none;
             padding: 0;
             margin: 0;
             text-align: center;
         }
+
         nav ul li {
             display: inline;
             margin: 0 20px;
         }
+
         nav ul li a {
             color: var(--secondary-color);
             text-decoration: none;
@@ -80,26 +101,33 @@
             display: inline-block;
             cursor: pointer;
         }
-        nav ul li a:hover, nav ul li a.active {
+
+        nav ul li a:hover,
+        nav ul li a.active {
             color: var(--accent-color);
             transform: scale(1.2);
+            border-bottom: 2px solid var(--accent-color);
         }
+
         section {
             background-color: white;
             margin: 10px 0;
             padding: 30px;
             border-radius: 20px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             display: none;
         }
+
         section.active {
             display: block;
         }
+
         h2 {
             color: var(--secondary-color);
             border-bottom: 2px solid var(--accent-color);
             padding-bottom: 10px;
         }
+
         .btn {
             display: inline-block;
             background-color: var(--accent-color);
@@ -111,11 +139,13 @@
             position: relative;
             overflow: hidden;
         }
+
         .btn:hover {
             background-color: var(--secondary-color);
             transform: translateY(-3px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
+
         .btn::after {
             content: '';
             position: absolute;
@@ -129,19 +159,28 @@
             transform: scale(1, 1) translate(-50%);
             transform-origin: 50% 50%;
         }
+
         .btn:hover::after {
             animation: ripple 1s ease-out;
         }
+
         @keyframes ripple {
             0% {
                 transform: scale(0, 0);
                 opacity: 0.5;
             }
+
             100% {
                 transform: scale(20, 20);
                 opacity: 0;
             }
         }
+
+        .btn-container {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
         footer {
             text-align: center;
             padding: 20px 0;
@@ -149,58 +188,67 @@
             color: white;
             border-radius: 30px 30px 0 0;
         }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .dark-mode {
+            --primary-color: #eeeeee;
+            --secondary-color: #c8c8c8;
+            --accent-color: #00adb5;
+            --background-color: #222831;
+            --text-color: #eeeeee;
+        }
     </style>
 </head>
+
 <body>
     <header>
         <div class="container header-content">
-            <img src="images/me.png" alt="Emilio Villa-Cueva" class="headshot">
+            <img src="images/me.png" alt="Emilio Villa-Cueva smiling, wearing a formal shirt" class="headshot">
             <div class="header-text">
                 <h1>Emilio Villa-Cueva</h1>
                 <h3>MS student at CIMAT</h3>
-                <!-- <h3>PhD student at MBZUAI</h3> -->
             </div>
         </div>
     </header>
-    <nav>
+    <nav aria-label="Main Navigation">
         <ul>
             <li><a onclick="showSection('about')" class="nav-link active">About</a></li>
             <li><a onclick="showSection('research')" class="nav-link">Research</a></li>
-            <!-- <li><a onclick="showSection('publications')" class="nav-link">Publications</a></li> -->
             <li><a onclick="showSection('contact')" class="nav-link">Contact</a></li>
         </ul>
     </nav>
     <div class="container">
         <section id="about" class="active">
             <h2>About Me</h2>
-            <p>I'm Emilio, I hold a master’s degree in Computer Science from CIMAT, and a background in Engineering Physics. My main goal is to contribute to the development of NLP systems that recognize and understand diverse cultures and languages. I'm also interested on developing methods that make the most out of limited data, enabling smaller contributors to make significant impacts in the field.</p>
-            <p style="text-align: center;"> <a href="https://scholar.google.com/citations?user=uYz6zaIAAAAJ" class="btn">Google Scholar</a> </p>
-            <p style="text-align: center;"> <a href="documents/cv.pdf" class="btn">Get CV</a> </p>
-
+            <p>I am a PhD student at MBZUAI with a master’s degree in Computer Science from CIMAT, and a bachelors in Engineering Physics. My main interest is to contribute to the development of NLP systems that recognize and understand diverse cultures and languages. I'm also interested in developing methods that make the most out of limited data, enabling smaller contributors to make significant impacts in the field.</p>
+            <div class="btn-container">
+                <a href="https://scholar.google.com/citations?user=uYz6zaIAAAAJ" class="btn" aria-label="Visit my Google Scholar profile">Google Scholar</a>
+            </div>
+            <div class="btn-container">
+                <a href="documents/cv.pdf" class="btn" aria-label="Download my CV">Get CV</a>
+            </div>
         </section>
         <section id="research">
             <h2>Research Interests</h2>
             <ul>
                 <li>Visual Language Models</li>
-                <li>Adapting LMs to new languages</li>
+                <li>Adapting LMs to new languages and cultures</li>
                 <li>Few-shot learning</li>
                 <li>Multilinguality</li>
                 <li>Domain Adaptation.</li>
             </ul>
         </section>
-        <!-- <section id="publications">
-            <h2>Recent Publications</h2>
-            <p>[todo :p]</p>
-        </section> -->
         <section id="contact">
-            <h2>Contact & socials</h2>
-            <p>email: evillacueva [at] gmail [dot] com</p>
+            <h2>Contact & Socials</h2>
+            <p>Email: evillacueva [at] gmail [dot] com</p>
             <p>X: @evllcv</p>
-            <!-- <p>gram: @villaemilio</p> -->
         </section>
     </div>
     <footer>
-        <p>last updated on july '24</p>
+        <p>Last updated on <script>document.write(new Date().toLocaleDateString('en-US', { month: 'long', year: 'numeric' }));</script></p>
     </footer>
 
     <script>
@@ -209,16 +257,22 @@
             document.querySelectorAll('section').forEach(section => {
                 section.classList.remove('active');
             });
-            
+
             // Show the selected section
             document.getElementById(sectionId).classList.add('active');
-            
+
             // Update active state in navigation
             document.querySelectorAll('.nav-link').forEach(link => {
                 link.classList.remove('active');
             });
             event.target.classList.add('active');
         }
+
+        const toggle = document.getElementById('dark-mode-toggle');
+        toggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+        });
     </script>
 </body>
+
 </html>
