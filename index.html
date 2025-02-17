@@ -1,278 +1,503 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Emilio Villa-Cueva's personal website. Learn about his research in NLP, his background in Engineering Physics, and his publications.">
     <title>Emilio Villa-Cueva</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --primary-color: #222831;
-            --secondary-color: #393E46;
-            --accent-color: #00ADB5;
-            --background-color: #EEEEEE;
-            --text-color: #393E46;
-        }
-
-        html, body {
-            height: 100%;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
         body {
-            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f4f1eb;
+            color: #2c2c2c;
+            min-height: 100vh;
+            font-family: 'Outfit', sans-serif;
             line-height: 1.6;
-            color: var(--text-color);
-            background-color: var(--background-color);
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            min-height: 100%;
+            overflow-x: hidden;
+        }
+
+        .background-shape {
+            position: fixed;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: radial-gradient(circle at center, #dcd3c9 0%, transparent 70%);
+            opacity: 0.5;
+            z-index: -1;
         }
 
         .container {
-            max-width: 800px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
-            flex: 1;
+            padding: 4rem 2rem;
         }
 
-        header {
-            background-color: var(--primary-color);
-            color: white;
-            text-align: center;
-            padding: 15px 0;
-            border-radius: 0 0 30px 30px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        .profile {
+            width: 200px;
+            height: 200px;
+            margin: 2rem auto 4rem;
+            position: relative;
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            overflow: hidden;
+            transition: border-radius 0.6s ease-in-out;
         }
 
-        .header-content {
+        .profile:hover {
+            border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%;
+        }
+
+        .profile img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: contrast(1.1) saturate(0.9);
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+
+        .tab {
+            background: none;
+            border: none;
+            color: #2c2c2c;
+            cursor: pointer;
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.1rem;
+            padding: 0.5rem 0;
+            position: relative;
+            opacity: 0.7;
+            transition: all 0.2s ease;
+        }
+
+        .tab::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #6b4d3c;
+            transition: width 0.3s ease;
+        }
+
+        .tab:hover {
+            opacity: 1;
+        }
+
+        .tab:hover::after {
+            width: 100%;
+        }
+
+        .tab.active {
+            opacity: 1;
+        }
+
+        .tab.active::after {
+            width: 100%;
+        }
+
+        .bio-link {
+            color: #6b4d3c;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(107, 77, 60, 0.3);
+            transition: all 0.2s ease;
+        }
+
+        .bio-link:hover {
+            border-bottom-color: #6b4d3c;
+        }
+
+        .content-container {
+            position: relative;
+            min-height: 400px;
+            height: fit-content;
+        }
+
+        #app {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .content {
+            position: absolute;
+            width: 100%;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+
+        .content.active {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: all;
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(10px);
+            padding: 3rem;
+            margin-bottom: 2rem;
+            border-radius: 20px;
+            position: relative;
+        }
+
+        .profile-links {
+            margin-top: 2rem;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .profile-button {
             display: flex;
             align-items: center;
-            justify-content: center;
-            flex-wrap: wrap;
+            gap: 0.5rem;
+            padding: 0.8rem 1.5rem;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 400;
+            transition: all 0.2s ease;
+            background: rgba(107, 77, 60, 0.1);
+            border: 1px solid transparent;
         }
 
-        .headshot {
-            width: 180px;
-            height: 180px;
-            border-radius: 20%;
-            margin-right: 4%;
-            border: 0px solid white;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        .profile-button:hover {
+            background: rgba(107, 77, 60, 0.15);
+            border-color: rgba(107, 77, 60, 0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(107, 77, 60, 0.1);
         }
 
-        .header-text {
-            text-align: center;
+        .profile-button:active {
+            transform: translateY(0);
+            box-shadow: none;
+        }
+
+        .button-text {
+            color: #6b4d3c;
+        }
+
+        .button-icon {
+            font-size: 1.2rem;
+            color: #6b4d3c;
+            transition: all 0.2s ease;
+            display: inline-block;
+        }
+
+        .cv-button:hover .button-icon {
+            animation: bounce 0.5s ease infinite;
+        }
+
+        .scholar-button:hover .button-icon {
+            animation: slide 0.5s ease infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-3px); }
+        }
+
+        @keyframes slide {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(3px); }
+        }
+
+        .publications {
+            margin-top: 3rem;
+        }
+
+        .publication {
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(107, 77, 60, 0.2);
+        }
+
+        .publication:last-child {
+            border-bottom: none;
+        }
+
+        .publication-title {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #2c2c2c;
+            margin-bottom: 0.5rem;
+        }
+
+        .publication-authors {
+            font-size: 1rem;
+            color: #4a4a4a;
+            margin-bottom: 0.5rem;
+        }
+
+        .publication-venue {
+            font-size: 0.95rem;
+            color: #666;
+        }
+
+        .conference {
+            color: #6b4d3c;
+            font-weight: 500;
+            padding: 0.2rem 0.5rem;
+            background: rgba(107, 77, 60, 0.1);
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .conference:hover {
+            background: rgba(107, 77, 60, 0.2);
         }
 
         h1 {
-            margin: 0;
-            font-size: 2.0em;
-        }
-
-        nav {
-            background-color: white;
-            padding: 15px 0;
-            border-radius: 20px;
-            margin: 20px auto;
-            max-width: 500px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        nav ul {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-            text-align: center;
-        }
-
-        nav ul li {
-            display: inline;
-            margin: 0 20px;
-        }
-
-        nav ul li a {
-            color: var(--secondary-color);
-            text-decoration: none;
-            font-weight: bold;
-            transition: color 0.3s ease, transform 0.3s ease;
-            display: inline-block;
-            cursor: pointer;
-        }
-
-        nav ul li a:hover,
-        nav ul li a.active {
-            color: var(--accent-color);
-            transform: scale(1.2);
-            border-bottom: 2px solid var(--accent-color);
-        }
-
-        section {
-            background-color: white;
-            margin: 10px 0;
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            display: none;
-        }
-
-        section.active {
-            display: block;
+            font-size: 2rem;
+            color: #6b4d3c;
+            margin-bottom: 2rem;
+            font-weight: 400;
         }
 
         h2 {
-            color: var(--secondary-color);
-            border-bottom: 2px solid var(--accent-color);
-            padding-bottom: 10px;
+            font-size: 1.4rem;
+            color: #6b4d3c;
+            margin-bottom: 1rem;
+            font-weight: 400;
         }
 
-        .btn {
-            display: inline-block;
-            background-color: var(--accent-color);
-            color: white;
-            padding: 10px 20px;
-            border-radius: 10px;
-            text-decoration: none;
-            transition: all 0.2s ease;
-            position: relative;
-            overflow: hidden;
+        .organic-shape {
+            position: fixed;
+            bottom: -20%;
+            left: -10%;
+            width: 50%;
+            height: 50%;
+            background: radial-gradient(circle at center, #e6ddd3 0%, transparent 70%);
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            opacity: 0.3;
+            z-index: -1;
+            animation: morphShape 15s infinite alternate ease-in-out;
         }
 
-        .btn:hover {
-            background-color: var(--secondary-color);
-            transform: translateY(-3px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-
-        .btn::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 5px;
-            height: 5px;
-            background: rgba(255, 255, 255, 0.5);
-            opacity: 0;
-            border-radius: 100%;
-            transform: scale(1, 1) translate(-50%);
-            transform-origin: 50% 50%;
-        }
-
-        .btn:hover::after {
-            animation: ripple 1s ease-out;
-        }
-
-        @keyframes ripple {
+        @keyframes morphShape {
             0% {
-                transform: scale(0, 0);
-                opacity: 0.5;
+                border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
             }
-
+            50% {
+                border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%;
+            }
             100% {
-                transform: scale(20, 20);
-                opacity: 0;
+                border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
             }
-        }
-
-        .btn-container {
-            text-align: center;
-            margin-bottom: 10px;
-        }
-
-        footer {
-            text-align: center;
-            padding: 20px 0;
-            background-color: var(--primary-color);
-            color: white;
-            border-radius: 30px 30px 0 0;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        .dark-mode {
-            --primary-color: #eeeeee;
-            --secondary-color: #c8c8c8;
-            --accent-color: #00adb5;
-            --background-color: #222831;
-            --text-color: #eeeeee;
         }
     </style>
 </head>
-
 <body>
-    <header>
-        <div class="container header-content">
-            <img src="images/me.png" alt="Emilio Villa-Cueva" class="headshot">
-            <div class="header-text">
-                <h1>Emilio Villa-Cueva</h1>
-                <h3>PhD at MBZUAI</h3>
-            </div>
-        </div>
-    </header>
-    <nav aria-label="Main Navigation">
-        <ul>
-            <li><a onclick="showSection('about')" class="nav-link active">About</a></li>
-            <li><a onclick="showSection('research')" class="nav-link">Research</a></li>
-            <li><a onclick="showSection('contact')" class="nav-link">Contact</a></li>
-        </ul>
-    </nav>
-    <div class="container">
-        <section id="about" class="active">
-            <h2>About Me</h2>
-            <p>I’m a PhD student at Mohamed bin Zayed University of Artificial Intelligence (MBZUAI) in the United Arab Emirates. I hold a master’s degree in Computer Science from CIMAT, and a background in Engineering Physics. My research focuses on building systems capable of understanding human communication across different languages and cultures in a multimodal setting. I am also interested on exploring methods that utilize minimal labeled data through few-shot learning. Before, I’ve worked on domain adaptation, cross-lingual transfer, and clickbait spoiling.</p>
-            <div class="btn-container">
-                <a href="https://scholar.google.com/citations?user=uYz6zaIAAAAJ" class="btn" aria-label="Visit my Google Scholar profile">Google Scholar</a>
-            </div>
-            <div class="btn-container">
-                <a href="documents/cv.pdf" class="btn" aria-label="Download my CV">Get CV</a>
-            </div>
-        </section>
-        <section id="research">
-            <h2>Research Interests</h2>
-            <ul>
-                <li>Benchmarking and improving Social Intelligence in LLMs and VLMs.</li>
-                <li>AI systems for multilingual and multicultural settings.</li>
-                <li>Few-shot learning.</li>
-                <li>Cross-lingual transfer.</li>
-                <li>Domain Adaptation.</li>
-            </ul>
-        </section>
-        <section id="contact">
-            <h2>Contact & Socials</h2>
-            <p>Email: evillacueva [at] gmail [dot] com</p>
-            <p>X: @evllcv</p>
-        </section>
-    </div>
-    <footer>
-        <p>Last updated on <script>document.write(new Date().toLocaleDateString('en-US', { month: 'long', year: 'numeric' }));</script></p>
-    </footer>
+    <div class="background-shape"></div>
+    <div class="organic-shape"></div>
+    <div class="container" id="app"></div>
 
     <script>
-        function showSection(sectionId) {
-            // Hide all sections
-            document.querySelectorAll('section').forEach(section => {
-                section.classList.remove('active');
-            });
+        // Website configuration
+        const config = {
+            profile: {
+                name: "Your Name",
+                image: "images/me.png",
+                title: "Emilio Villa"
+            },
+            tabs: [
+                {
+                    id: "about",
+                    title: "About",
+                    content: {
+                        type: "text",
+                        body: "I’m a PhD student at MBZUAI, supervised by <a href='https://mbzuai.ac.ae/study/faculty/thamar-solorio/' class='bio-link'>Thamar Solorio</a>. My research focuses on building/evaluating AI that can understand human social interactions in multimodal settings, with a special focus on implicit signals and how they vary across languages and cultures. I’m also interested in few-shot learning, exploring ways to help models perform well with minimal labeled data. Before this, I earned a master’s degree in Computer Science from CIMAT and did a bachelors in Engineering Physics.",
+                        buttons: [
+                            {
+                                text: "Download CV",
+                                icon: "↓",
+                                link: "documents/cv.pdf",
+                                class: "cv-button"
+                            },
+                            {
+                                text: "Google Scholar",
+                                icon: "→",
+                                link: "https://scholar.google.com/citations?user=uYz6zaIAAAAJ",
+                                class: "scholar-button"
+                            }
+                        ]
+                    }
+                },
+                {
+                    id: "research",
+                    title: "Research",
+                    content: {
+                        type: "research",
+                        interests: "My research focuses on multimodal and multicultural social intelligence in AI systems, particularly in how models integrate visual cues to better understand human interactions and social dynamics across different cultures. I am also interested in few-shot learning techniques that enable AI to generalize from limited data, as well as cross-lingual transfer methods that enhance the adaptability of language models across diverse linguistic and cultural contexts.",
+                        publications: [
+                            {
+                                title: "Adaptive Cross-lingual Text Classification through In-Context One-Shot Demonstrations",
+                                authors: "Emilio Villa-Cueva, Adrian López-Monroy, Fernando Sánchez Vega, Thamar Solorio",
+                                conference: "NAACL 2024",
+                                venue: "North American Chapter of the Association for Computational Linguistics"
+                            },
+                            {
+                                title: "CVQA: Culturally-diverse multilingual visual question answering benchmark",
+                                authors: "David Romero, Chenyang Lyu, Haryo Akbarianto Wibowo, Teresa Lynn, Injy Hamed, Aditya Nanda Kishore, Aishik Mandal, Alina Dragonetti, Artem Abzaliev, Atnafu Lambebo Tonja, Bontu Fufa Balcha, Chenxi Whitehouse, Christian Salamea, Dan John Velasco, David Ifeoluwa Adelani, David Le Meur, Emilio Villa-Cueva, Fajri Koto, Fauzan Farooqui, Frederico Belcavello, Ganzorig Batnasan, Gisela Vallejo, Grainne Caulfield, Guido Ivetta, Haiyue Song, Henok Biadglign Ademtew, Hernán Maina, Holy Lovenia, Israel Abebe Azime, Jan Christian Blaise Cruz, Jay Gala, Jiahui Geng, Jesus-German Ortiz-Barajas, Jinheon Baek, Jocelyn Dunstan, Laura Alonso Alemany, Kumaranage Ravindu Yasas Nagasinghe, Luciana Benotti, Luis Fernando d'Haro, Marcelo Viridiano, Marcos Estecha-Garitagoitia, Maria Camila Buitrago Cabrera, Mario Rodríguez-Cantelar, Mélanie Jouitteau, Mihail Mihaylov, Mohamed Fazli Mohamed Imam, Muhammad Farid Adilazuarda, Munkhjargal Gochoo, Munkh-Erdene Otgonbold, Naome Etori, Olivier Niyomugisha, Paula Mónica Silva, Pranjal Chitale, Raj Dabre, Rendi Chevi, Ruochen Zhang, Ryandito Diandaru, Samuel Cahyawijaya, Santiago Góngora, Soyeong Jeong, Sukannya Purkayastha, Tatsuki Kuribayashi, Teresa Clifford, Thanmay Jayakumar, Tiago Timponi Torrent, Toqeer Ehsan, Vladimir Araujo, Yova Kementchedjhieva, Zara Burzo, Zheng Wei Lim, Zheng Xin Yong, Oana Ignat, Joan Nwatu, Rada Mihalcea, Thamar Solorio, Alham Fikri Aji,",
+                                conference: "NeurIPS 2024",
+                                venue: "Neural Information Processing Systems"
+                            },
+                            {
+                                title: "PolitiBETO, a Domain-Adapted Transformer for Multi-class Political Author Profiling.",
+                                authors: "Emilio Villa-Cueva, Ivan González-Franco, Fernando Sanchez-Vega, Adrián Pastor López-Monroy",
+                                conference: "IberLEF 2022",
+                                venue: "IberLEF"
+                            }
+                        ]
+                    }
+                },
+                {
+                    id: "contact",
+                    title: "Contact",
+                    content: {
+                        type: "contact",
+                        email: "evillacueva [at] gmail [dot] com / emilio.villa [at] mbzuai [dot] ac [dot] ae",
+                        x: "evllcv",
+                    }
+                }
+            ]
+        };
 
-            // Show the selected section
-            document.getElementById(sectionId).classList.add('active');
-
-            // Update active state in navigation
-            document.querySelectorAll('.nav-link').forEach(link => {
-                link.classList.remove('active');
-            });
-            event.target.classList.add('active');
+        function createProfileSection(profile) {
+            return `
+                <div class="profile">
+                    <img src="${profile.image}" alt="${profile.name}">
+                </div>
+            `;
         }
 
-        const toggle = document.getElementById('dark-mode-toggle');
-        toggle.addEventListener('click', () => {
-            document.body.classList.toggle('dark-mode');
-        });
-    </script>
-</body>
+        function createTabs(tabs) {
+            return `
+                <div class="tabs">
+                    ${tabs.map((tab, index) => `
+                        <button class="tab ${index === 0 ? 'active' : ''}" data-tab="${tab.id}">
+                            ${tab.title}
+                        </button>
+                    `).join('')}
+                </div>
+            `;
+        }
 
-</html>
+        function createAboutContent(content) {
+            return `
+                <div class="section">
+                    <h1>About Me</h1>
+                    <p>${content.body}</p>
+                    <div class="profile-links">
+                        ${content.buttons.map(button => `
+                            <a href="${button.link}" class="profile-button ${button.class}">
+                                <span class="button-text">${button.text}</span>
+                                <span class="button-icon">${button.icon}</span>
+                            </a>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        function createResearchContent(content) {
+            return `
+                <div class="section">
+                    <h1>Research</h1>
+                    <div class="research-interests">
+                        <h2>Research Interests</h2>
+                        <p>${content.interests}</p>
+                    </div>
+                    <div class="publications">
+                        <h2>Publications</h2>
+                        ${content.publications.map(pub => `
+                            <div class="publication">
+                                <p class="publication-title">${pub.title}</p>
+                                <p class="publication-authors">${pub.authors}</p>
+                                <p class="publication-venue">
+                                    In <span class="conference">${pub.conference}: ${pub.venue}</span>
+                                </p>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        function createContactContent(content) {
+            return `
+                <div class="section">
+                    <h1>Contact</h1>
+                    <p>Email: ${content.email}</p>
+                    <p>LinkedIn: ${content.linkedin}</p>
+                    ${content.github ? `<p>GitHub: ${content.github}</p>` : ''}
+                </div>
+            `;
+        }
+
+        function createContent(tabs) {
+            return `
+                <div class="content-container">
+                    ${tabs.map((tab, index) => `
+                        <div class="content ${index === 0 ? 'active' : ''}" id="${tab.id}">
+                            ${
+                                tab.content.type === 'text' ? createAboutContent(tab.content) :
+                                tab.content.type === 'research' ? createResearchContent(tab.content) :
+                                createContactContent(tab.content)
+                            }
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+        }
+
+        // Initialize the website
+        function initializeWebsite() {
+            const appContainer = document.getElementById('app');
+            appContainer.innerHTML = `
+                ${createProfileSection(config.profile)}
+                ${createTabs(config.tabs)}
+                ${createContent(config.tabs)}
+            `;
+
+            // Initialize tab switching
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const currentContent = document.querySelector('.content.active');
+                    const newContent = document.getElementById(tab.dataset.tab);
+                    
+                    if (currentContent === newContent) return;
+
+                    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+
+                    currentContent.style.opacity = 0;
+                    currentContent.style.transform = 'translateY(20px)';
+                    
+                    setTimeout(() => {
+                        currentContent.classList.remove('active');
+                        newContent.classList.add('active');
+                        setTimeout(() => {
+                            newContent.style.opacity = 1;
+                            newContent.style.transform = 'translateY(0)';
+                        }, 50);
+                    }, 200);
+                });
+            });
+        }
+
+        // Initialize when the page loads
+        initializeWebsite();
+    </script>
