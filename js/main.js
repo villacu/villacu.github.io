@@ -260,9 +260,6 @@ function initializeWebsite() {
                     currentContent.classList.remove('active');
                     newContent.classList.add('active');
                     
-                    // Scroll to top when switching tabs
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                    
                     setTimeout(() => {
                         newContent.style.opacity = 1;
                         newContent.style.transform = 'translateY(0)';
