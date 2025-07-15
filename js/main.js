@@ -36,6 +36,18 @@ const config = {
                 interests: "My research focuses on multimodal and multicultural social intelligence in AI systems, particularly in how models integrate visual cues to better understand human interactions and social dynamics across different cultures. I am also interested in few-shot learning techniques that enable AI to generalize from limited data, as well as cross-lingual transfer methods that enhance the adaptability of language models across diverse linguistic and cultural contexts.",
                 publications: [
                     {
+                        title: "MOMENTS: A Comprehensive Multimodal Benchmark for Theory of Mind",
+                        authors: "Emilio Villa-Cueva, SM Ahmed, Rendi Chevi, Jan Christian Blaise Cruz, Kareem Elzeky, Fermin Cristobal, Alham Fikri Aji, Skyler Wang, Rada Mihalcea, Thamar Solorio",
+                        conference: "Arxiv 2025",
+                        venue: "Arxiv"
+                    },
+                    {
+                        title: "CaMMT: Benchmarking Culturally Aware Multimodal Machine Translation",
+                        authors: "Emilio Villa-Cueva, Sholpan Bolatzhanova, Diana Turmakhan, Kareem Elzeky, Henok Biadglign Ademtew, Alham Fikri Aji, Israel Abebe Azime, Jinheon Baek, Frederico Belcavello, Fermin Cristobal, Jan Christian Blaise Cruz, Mary Dabre, Raj Dabre, Toqeer Ehsan, Naome A Etori, Fauzan Farooqui, Jiahui Geng, Guido Ivetta, Thanmay Jayakumar, Soyeong Jeong, Zheng Wei Lim, Aishik Mandal, Sofia Martinelli, Mihail Minkov Mihaylov, Daniil Orel, Aniket Pramanick, Sukannya Purkayastha, Israfel Salazar, Haiyue Song, Tiago Timponi Torrent, Debela Desalegn Yadeta, Injy Hamed, Atnafu Lambebo Tonja, Thamar Solorio",
+                        conference: "Arxiv 2025",
+                        venue: "Arxiv"
+                    },
+                    {
                         title: "Adaptive Cross-lingual Text Classification through In-Context One-Shot Demonstrations",
                         authors: "Emilio Villa-Cueva, Adrian López-Monroy, Fernando Sánchez Vega, Thamar Solorio",
                         conference: "NAACL 2024",
