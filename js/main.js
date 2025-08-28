@@ -11,7 +11,7 @@ const config = {
             title: "About",
             content: {
                 type: "text",
-                body: "I'm a PhD student at MBZUAI, supervised by <a href='https://mbzuai.ac.ae/study/faculty/thamar-solorio/' class='bio-link'>Thamar Solorio</a> (<a href='https://ritual-uh.github.io/web/' class='bio-link'>RiTUAL Lab</a>). My research focuses on building/evaluating AI that can understand human social interactions in multimodal settings, with a special focus on implicit signals and how they vary across languages and cultures.</p><p>I'm also interested in few-shot learning, exploring ways to help models perform well with minimal labeled data. Before this, I earned a master's degree in Computer Science from CIMAT and did a bachelors in Engineering Physics.",
+                body: "I'm a PhD student at MBZUAI, supervised by <a href='https://mbzuai.ac.ae/study/faculty/thamar-solorio/' class='bio-link'>Thamar Solorio</a> (<a href='https://ritual-mbzuai.github.io/web/' class='bio-link'>RiTUAL Lab</a>). My research focuses on building/evaluating AI that can understand human social interactions in multimodal settings, with a special focus on multimodal signals influence communication and social understanding . </p><p>I'm also interested in few-shot learning and language adaptation. Before this, I earned a master's degree in Computer Science from CIMAT and did a bachelors in Engineering Physics.",
                 buttons: [
                     {
                         text: "Download CV",
@@ -33,19 +33,19 @@ const config = {
             title: "Research",
             content: {
                 type: "research",
-                interests: "My research focuses on multimodal and multicultural social intelligence in AI systems, particularly in how models integrate visual cues to better understand human interactions and social dynamics across different cultures. I am also interested in few-shot learning techniques that enable AI to generalize from limited data, as well as cross-lingual transfer methods that enhance the adaptability of language models across diverse linguistic and cultural contexts.",
+                interests: "List of recent publications",
                 publications: [
                     {
                         title: "MOMENTS: A Comprehensive Multimodal Benchmark for Theory of Mind",
                         authors: "Emilio Villa-Cueva, SM Ahmed, Rendi Chevi, Jan Christian Blaise Cruz, Kareem Elzeky, Fermin Cristobal, Alham Fikri Aji, Skyler Wang, Rada Mihalcea, Thamar Solorio",
-                        conference: "Arxiv 2025",
-                        venue: "Arxiv"
+                        conference: "EMNLP 2025 (Findings)",
+                        venue: "Empirical Methods on Natural Language Processing"
                     },
                     {
                         title: "CaMMT: Benchmarking Culturally Aware Multimodal Machine Translation",
                         authors: "Emilio Villa-Cueva, Sholpan Bolatzhanova, Diana Turmakhan, Kareem Elzeky, Henok Biadglign Ademtew, Alham Fikri Aji, Israel Abebe Azime, Jinheon Baek, Frederico Belcavello, Fermin Cristobal, Jan Christian Blaise Cruz, Mary Dabre, Raj Dabre, Toqeer Ehsan, Naome A Etori, Fauzan Farooqui, Jiahui Geng, Guido Ivetta, Thanmay Jayakumar, Soyeong Jeong, Zheng Wei Lim, Aishik Mandal, Sofia Martinelli, Mihail Minkov Mihaylov, Daniil Orel, Aniket Pramanick, Sukannya Purkayastha, Israfel Salazar, Haiyue Song, Tiago Timponi Torrent, Debela Desalegn Yadeta, Injy Hamed, Atnafu Lambebo Tonja, Thamar Solorio",
-                        conference: "Arxiv 2025",
-                        venue: "Arxiv"
+                        conference: "EMNLP 2025 (Findings)",
+                        venue: "Empirical Methods on Natural Language Processing"
                     },
                     {
                         title: "Adaptive Cross-lingual Text Classification through In-Context One-Shot Demonstrations",
