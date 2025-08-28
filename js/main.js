@@ -33,7 +33,7 @@ const config = {
             title: "Research",
             content: {
                 type: "research",
-                interests: "List of recent publications",
+                interests: "Multimodal Social Intelligence, Theory of Mind, Multilinguality",
                 publications: [
                     {
                         title: "MOMENTS: A Comprehensive Multimodal Benchmark for Theory of Mind",
