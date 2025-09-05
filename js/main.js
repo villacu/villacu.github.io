@@ -11,7 +11,8 @@ const config = {
             title: "About",
             content: {
                 type: "text",
-                body: "I'm a PhD student at MBZUAI, supervised by <a href='https://mbzuai.ac.ae/study/faculty/thamar-solorio/' class='bio-link'>Thamar Solorio</a> (<a href='https://ritual-mbzuai.github.io/web/' class='bio-link'>RiTUAL Lab</a>). My research focuses on building/evaluating AI that can understand human social interactions in multimodal settings, with a special focus on multimodal signals influence communication and social understanding . </p><p>I'm also interested in few-shot learning and language adaptation. Before this, I earned a master's degree in Computer Science from CIMAT and did a bachelors in Engineering Physics.",
+                body: "I'm a PhD student at MBZUAI, supervised by <a href='https://lit.eecs.umich.edu/' class='bio-link'>Thamar Solorio</a> (<a href='https://ritual-mbzuai.github.io/web/' class='bio-link'>RiTUAL Lab</a>). My research focuses on building/evaluating AI that can understand human social interactions in multimodal settings, with a special focus on multimodal signals influence communication and social understanding . </p><p>I'm also interested in multilingual NLP, language adaptation of LLMs, and few-shot learning. Before this, I earned a master's degree in Computer Science from CIMAT and did a bachelors in Engineering Physics. <br><br> This semester, I am doing a research stay at <a href='https://ritual-mbzuai.github.io/web/' class='bio-link'>LIT Lab</a> at the University of Michigan.",
+                
                 buttons: [
                     {
                         text: "Download CV",
@@ -47,6 +48,13 @@ const config = {
                         conference: "EMNLP 2025 (Findings)",
                         venue: "Empirical Methods on Natural Language Processing"
                     },
+                    {
+                        title: "SHADES: Towards a multilingual assessment of stereotypes in large language models",
+                        authors: "Margaret Mitchell, Giuseppe Attanasio, Ioana Baldini, Miruna Clinciu, Jordan Clive, Pieter Delobelle, Manan Dey, Sil Hamilton, Timm Dill, Jad Doughman, Ritam Dutt, Avijit Ghosh, Jessica Zosa Forde, Carolin Holtermann, Lucie-Aimée Kaffee, Tanmay Laud, Anne Lauscher, Roberto L Lopez-Davila, Maraim Masoud, Nikita Nangia, Anaelia Ovalle, Giada Pistilli, Dragomir Radev, Beatrice Savoldi, Vipul Raheja, Jeremy Qin, Esther Ploeger, Arjun Subramonian, Kaustubh Dhole, Kaiser Sun, Amirbek Djanibekov, Jonibek Mansurov, Kayo Yin, Emilio Villa Cueva, Sagnik Mukherjee, Jerry Huang, Xudong Shen, Jay Gala, Hamdan Al-Ali, Tair Djanibekov, Nurdaulet Mukhituly, Shangrui Nie, Shanya Sharma, Karolina Stańczak, Eliza Szczechla, Tiago Timponi Torrent, Deepak Tunuguntla, Marcelo Viridiano, Oskar Van Der Wal, Adina Yakefu, Aurélie Névéol, Mike Zhang, Sydney Zink, Zeerak Talat",
+                        conference: "NAACL 2025",
+                        venue: "Nations of the Americas Chapter of the Association for Computational Linguistics"
+                    },
+
                     {
                         title: "Adaptive Cross-lingual Text Classification through In-Context One-Shot Demonstrations",
                         authors: "Emilio Villa-Cueva, Adrian López-Monroy, Fernando Sánchez Vega, Thamar Solorio",
@@ -200,7 +208,7 @@ function createContactContent(content) {
             
             <div class="social-links">
                 <a href="https://twitter.com/${content.x}" class="social-link" aria-label="Twitter/X Profile" target="_blank">
-                    <i class="fab fa-x-twitter"></i>
+                    <i class="fa-solid fa-x"></i>
                 </a>
                 <a href="https://linkedin.com/in/${content.linkedIn}" class="social-link" aria-label="LinkedIn Profile" target="_blank">
                     <i class="fab fa-linkedin-in"></i>
